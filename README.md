@@ -117,6 +117,52 @@ This code only switches MOSFETs. You are responsible for electrical safety, isol
 
 ---
 
+## Random shock sequence
+
+A random 5-minute shock sequence found the `random_shock_seq_5min.txt` file. 
+We use a constrained semi-Markov random schedule to remove predictable patterns while keeping shock exposure typical for Electric Shock Avoidance Assay. Four states: Upside (U), Downside (D), Both (A), None (N). Dwells: 7–15 s for U/D/N, 7–12 s for A. Quotas: U 31%, D 31%, A 12%, N 26%. Constraints: start with N; never A→A; place ≥1 N between any two A; keep Upside≈Downside; keep self-transitions low.
+Why this setup: bees learn side avoidance quickly when contingencies are stable, often within minutes; short, jittered dwells prevent timing- or side-based prediction (Kirkerud et al., 2017; Marchal et al., 2019; Agarwal et al., 2011). Quotas match standard exposure so effects are not due to too little or too much stimulation. The structure also supports master–yoked logic: when shock is uncontrollable, avoidance degrades even with matched totals, so we hold totals constant to isolate controllability (Dinges et al., 2017). Using semi-Markov timing rather than fixed intervals removes periodic cues that animals can exploit (Daw & Touretzky, 2002).
+References
+Agarwal, M., Giannoni-Guzmán, M. A., Morales-Matos, C., Del Valle Díaz, R., Abramson, C. I., & Giray, T. (2011). Dopamine and octopamine influence avoidance learning of honey bees in a place preference assay. PLoS ONE, 6(9), e25371. 
+Daw, N. D., & Touretzky, D. S. (2002). Dopamine and inference about timing. Advances in Neural Information Processing Systems, 14, 1–7. 
+Princeton University
+Dinges, C. W., et al. (2017). Studies of learned helplessness in honey bees (Apis mellifera ligustica). Journal of Experimental Psychology: Animal Learning and Cognition, 43(3), 147–158. 
+Kirkerud, N. H., Mota, T., & Lind, O. (2017). Aversive learning of colored lights in walking honeybees. Frontiers in Behavioral Neuroscience, 11, 94. 
+Marchal, P., et al. (2019). Inhibitory learning of phototaxis by honeybees in a passive avoidance paradigm. Journal of Experimental Biology, 222, jeb201475.
+
+ChatGPT prompt to produce n seconds random shock sequence:
+Task: Generate a `<TOTAL_SECONDS>`-second random shock sequence for a honey-bee ESA using a constrained semi-Markov process.
+States and codes
+- U = Upside
+- D = Downside
+- A = Both
+- N = None
+Hard requirements
+1) Total duration = <TOTAL_SECONDS>.
+2) Dwell bounds (s): U,D,N ∈ [7,15]; A ∈ [7,12]. Integer seconds only.
+3) Exposure quotas scaled to <TOTAL_SECONDS> with ±max(2 s, 1%) tolerance:
+   - U = 31% of total
+   - D = 31% of total
+   - A = 12% of total (keep within 10–15%)
+   - N = 26% of total (never <20%)
+4) Topology constraints:
+   - Start with N.
+   - No consecutive A.
+   - At least one N between any two A.
+   - Keep self-transitions low overall.
+   - Keep U and D totals within ±2 s of each other.
+Algorithm
+- Build a constraint-compliant state skeleton.
+- Assign lower-bound dwells, then allocate remaining seconds randomly without breaching item upper bounds or constraints. Resample if any check fails.
+- Convert to contiguous durations that sum exactly to <TOTAL_SECONDS>.
+Output format (strict)
+- Return ONLY a tab-delimited table with EXACTLY two columns in this order and header row:
+state	duration_s
+- No extra text, notes, or summaries. No code fences. No totals row. One line per state in sequence.
+
+
+---
+
 ## Contact
 
 Author: Babur Erdem • [ebabur@metu.edu.tr](mailto:ebabur@metu.edu.tr)
