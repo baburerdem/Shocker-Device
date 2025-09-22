@@ -119,7 +119,8 @@ This code only switches MOSFETs. You are responsible for electrical safety, isol
 
 ## Random shock sequence
 
-A random 5-minute shock sequence found the `random_shock_seq_5min.txt` file. 
+A random 5-minute shock sequence found the `random_shock_seq_5min.txt` file.
+
 We use a constrained semi-Markov random schedule to remove predictable patterns while keeping shock exposure typical for Electric Shock Avoidance Assay. Four states: Upside (U), Downside (D), Both (A), None (N). Dwells: 7–15 s for U/D/N, 7–12 s for A. Quotas: U 31%, D 31%, A 12%, N 26%. Constraints: start with N; never A→A; place ≥1 N between any two A; keep Upside≈Downside; keep self-transitions low.
 
 Why this setup: bees learn side avoidance quickly when contingencies are stable, often within minutes; short, jittered dwells prevent timing- or side-based prediction (Kirkerud et al., 2017; Marchal et al., 2019; Agarwal et al., 2011). Quotas match standard exposure so effects are not due to too little or too much stimulation. The structure also supports master–yoked logic: when shock is uncontrollable, avoidance degrades even with matched totals, so we hold totals constant to isolate controllability (Dinges et al., 2017). Using semi-Markov timing rather than fixed intervals removes periodic cues that animals can exploit (Daw & Touretzky, 2002).
