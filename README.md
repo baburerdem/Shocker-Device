@@ -1,5 +1,6 @@
 # Shocker-Device
-Shock Device Controller for Electric Shock Avoidance Assay
+Shock Device Controller for Electric Shock Avoidance Assay.
+
 Constant-current avoidance rig controller. Host GUI drives MOSFET switches on an Arduino with tight, host-side timing. Modes: Upside (U), Downside (D), All (A), None (N), and host-driven Random.
 
 ---
