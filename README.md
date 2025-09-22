@@ -133,6 +133,7 @@ Kirkerud, N. H., Mota, T., & Lind, O. (2017). Aversive learning of colored light
 Marchal, P., et al. (2019). Inhibitory learning of phototaxis by honeybees in a passive avoidance paradigm. Journal of Experimental Biology, 222, jeb201475.
 
 ChatGPT prompt to produce n seconds random shock sequence:
+```
 Task: Generate a `<TOTAL_SECONDS>`-second random shock sequence for a honey-bee ESA using a constrained semi-Markov process.
 States and codes
 - U = Upside
@@ -161,7 +162,7 @@ Output format (strict)
 - Return ONLY a tab-delimited table with EXACTLY two columns in this order and header row:
 state	duration_s
 - No extra text, notes, or summaries. No code fences. No totals row. One line per state in sequence.
-
+```
 
 ---
 
