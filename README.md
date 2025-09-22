@@ -127,12 +127,19 @@ We use a constrained semi-Markov random schedule to remove predictable patterns 
 Why this sequence: bees learn side avoidance quickly when contingencies are stable, often within minutes; short, jittered dwells prevent timing- or side-based prediction (Kirkerud et al., 2017; Marchal et al., 2019; Agarwal et al., 2011). Quotas match standard exposure so effects are not due to too little or too much stimulation. The structure also supports master–yoked logic: when shock is uncontrollable, avoidance degrades even with matched totals, so we hold totals constant to isolate controllability (Dinges et al., 2017). Using semi-Markov timing rather than fixed intervals removes periodic cues that animals can exploit (Daw & Touretzky, 2002).
 
 References
+
 Agarwal, M., Giannoni-Guzmán, M. A., Morales-Matos, C., Del Valle Díaz, R., Abramson, C. I., & Giray, T. (2011). Dopamine and octopamine influence avoidance learning of honey bees in a place preference assay. PLoS ONE, 6(9), e25371. 
+
 Daw, N. D., & Touretzky, D. S. (2002). Dopamine and inference about timing. Advances in Neural Information Processing Systems, 14, 1–7. 
 Princeton University
+
 Dinges, C. W., et al. (2017). Studies of learned helplessness in honey bees (Apis mellifera ligustica). Journal of Experimental Psychology: Animal Learning and Cognition, 43(3), 147–158. 
+
 Kirkerud, N. H., Mota, T., & Lind, O. (2017). Aversive learning of colored lights in walking honeybees. Frontiers in Behavioral Neuroscience, 11, 94. 
+
 Marchal, P., et al. (2019). Inhibitory learning of phototaxis by honeybees in a passive avoidance paradigm. Journal of Experimental Biology, 222, jeb201475.
+
+---
 
 ChatGPT prompt to produce n seconds random shock sequence:
 ```
